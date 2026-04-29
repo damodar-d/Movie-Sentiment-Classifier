@@ -35,5 +35,5 @@ def preprocess_text(text):
      y.append(ps.stem(i))
     res = y[:]
     y.clear()
-    return res
+    return " ".join(res)
 

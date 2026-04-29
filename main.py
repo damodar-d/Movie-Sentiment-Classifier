@@ -3,8 +3,8 @@ import pickle
 from preprocess import preprocess_text
 
 
-model  = pickle.load(open('model.pkl', 'rb'))
-vectorizer  = pickle.load(open('vectorizer.pkl', 'rb'))
+model  = pickle.load(open('model_new.pkl', 'rb'))
+vectorizer  = pickle.load(open('vectorizer_new.pkl', 'rb'))
 
 st.title('Movie Sentiment Classifier')
 
@@ -13,7 +13,7 @@ text = st.text_input("Enter any movie review:")
 if st.button('Classify'):
     print("Working...")
     preprocessed_text = preprocess_text(text)
-    text_vectorized = vectorizer.transform(preprocessed_text)
+    text_vectorized = vectorizer.transform([preprocessed_text])
     result = model.predict(text_vectorized)[0]
     print(result)
     if result == 'positive':
